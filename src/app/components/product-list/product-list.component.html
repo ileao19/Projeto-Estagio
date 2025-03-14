@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Lista de Produtos</h2>
+
+  <!-- Formulário para adicionar novo produto -->
+  <div class="card p-3 mb-4">
+    <h4>Adicionar Produto</h4>
+    <div class="row g-2">
+      <div class="col-md-3">
+        <input type="text" class="form-control" [(ngModel)]="newProduct.nomeDoProduto" placeholder="Nome do Produto" maxlength="20">
+      </div>
+      <div class="col-md-3">
+        <input type="text" class="form-control" [(ngModel)]="newProduct.descricaoDoProduto" placeholder="Descrição" maxlength="50">
+      </div>
+      <div class="col-md-2">
+        <input type="text" class="form-control" [(ngModel)]="newProduct.codigo" placeholder="Código" maxlength="10">
+      </div>
+      <div class="col-md-2">
+        <input type="number" class="form-control" [(ngModel)]="newProduct.quantidade" placeholder="Quantidade">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success w-100" (click)="addProduct()">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabela de Produtos -->
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Código</th>
+          <th>Quantidade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.nomeDoProduto }}</td>
+          <td>{{ product.descricaoDoProduto }}</td>
+          <td>{{ product.codigo }}</td>
+          <td>{{ product.quantidade }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm me-2" (click)="startEditProduct(product)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Formulário de edição -->
+  <div *ngIf="editingProduct" class="card p-3 mt-4">
+    <h4>Editando Produto</h4>
+    <div class="row g-2">
+      <div class="col-md-3">
+        <input type="text" class="form-control" [(ngModel)]="editingProduct.nomeDoProduto" placeholder="Nome do Produto" maxlength="20">
+      </div>
+      <div class="col-md-3">
+        <input type="text" class="form-control" [(ngModel)]="editingProduct.descricaoDoProduto" placeholder="Descrição" maxlength="50">
+      </div>
+      <div class="col-md-2">
+        <input type="text" class="form-control" [(ngModel)]="editingProduct.codigo" placeholder="Código" maxlength="10">
+      </div>
+      <div class="col-md-2">
+        <input type="number" class="form-control" [(ngModel)]="editingProduct.quantidade" placeholder="Quantidade">
+      </div>
+      <div class="col-md-2 d-flex">
+        <button class="btn btn-success me-2" (click)="saveEdit()">Salvar</button>
+        <button class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

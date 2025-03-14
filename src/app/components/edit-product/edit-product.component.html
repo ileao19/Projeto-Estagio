@@ -1,0 +1,41 @@
+<h2>Editar Produto</h2>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <!-- Nome do Produto -->
+  <label for="nomeDoProduto">Nome:</label>
+  <input id="nomeDoProduto" formControlName="nomeDoProduto" />
+  <div *ngIf="formControls['nomeDoProduto'].invalid && formControls['nomeDoProduto'].touched">
+    <small *ngIf="formControls['nomeDoProduto'].hasError('required')">O nome é obrigatório.</small>
+    <small *ngIf="formControls['nomeDoProduto'].hasError('minlength')">O nome deve ter pelo menos 3 caracteres.</small>
+    <small *ngIf="formControls['nomeDoProduto'].hasError('maxlength')">O nome pode ter no máximo 20 caracteres.</small>
+  </div>
+
+  <!-- Descrição do Produto -->
+  <label for="descricaoDoProduto">Descrição:</label>
+  <input id="descricaoDoProduto" formControlName="descricaoDoProduto" />
+  <div *ngIf="formControls['descricaoDoProduto'].invalid && formControls['descricaoDoProduto'].touched">
+    <small *ngIf="formControls['descricaoDoProduto'].hasError('required')">A descrição é obrigatória.</small>
+    <small *ngIf="formControls['descricaoDoProduto'].hasError('maxlength')">A descrição pode ter no máximo 50 caracteres.</small>
+  </div>
+
+  <!-- Código do Produto -->
+  <label for="codigo">Código:</label>
+  <input id="codigo" formControlName="codigo" />
+  <div *ngIf="formControls['codigo'].invalid && formControls['codigo'].touched">
+    <small *ngIf="formControls['codigo'].hasError('required')">O código é obrigatório.</small>
+    <small *ngIf="formControls['codigo'].hasError('pattern')">O código deve conter apenas números.</small>
+    <small *ngIf="formControls['codigo'].hasError('maxlength')">O código pode ter no máximo 10 caracteres.</small>
+  </div>
+
+  <!-- Quantidade do Produto -->
+  <label for="quantidade">Quantidade:</label>
+  <input id="quantidade" type="number" formControlName="quantidade" />
+  <div *ngIf="formControls['quantidade'].invalid && formControls['quantidade'].touched">
+    <small *ngIf="formControls['quantidade'].hasError('required')">A quantidade é obrigatória.</small>
+    <small *ngIf="formControls['quantidade'].hasError('min')">A quantidade deve ser pelo menos 1.</small>
+  </div>
+
+  <!-- Botões -->
+  <button type="submit" [disabled]="productForm.invalid">Salvar</button>
+  <button type="button" (click)="cancel.emit()">Cancelar</button>
+</form>
