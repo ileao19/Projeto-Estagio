@@ -1,0 +1,6 @@
+git init
+git add README.md
+git commit -m "Primeiro commit - desafio Angular Firebase"
+git branch -M main
+git remote add origin https://github.com/ileao19/Projeto-Estagio.git
+git push -u origin main
