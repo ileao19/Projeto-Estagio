@@ -3,7 +3,7 @@ import { addDoc, doc, deleteDoc, updateDoc, getDocs, getFirestore } from 'fireba
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../firebase.config';
 import { Product } from '../models/product';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection } from '@angular/fire/firestore';
 
 
 @Injectable({
